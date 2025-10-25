@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voice Dictionary App</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'home.css' %}">
+</head>
+
+<body>
+<h1 style="text-align: center;font-size: 100px;">Voice Dictionary App</h1>
+
+<form method="get">
+<input type="text" placeholder="Enter a word..." name="wordinput" id="wordinput" value="{{ word }}">
+<div id="buttons"> 
+<button id="searchbutton" type="submit">Search</button>
+<button id="voiceinputbutton" type="button">Voice Input</button>
+</div>
+</form>
+
+<div id="display">
+{% if word_data %}
+{% if word_data.error %}
+<h3>{{ word_data.error }}</h3>
+{% else %}
+<hr> 
+
+<h2 style="color: rgb(0, 0, 142);font-size: 50px;">Phonetics:{{ word_data.phonetics }}</h2>
+<hr>
+
+{% for meaning in word_data.meanings %}
+                <div style="border: 1px solid #ddd; padding: 15px; margin-bottom: 25px; border-radius: 8px;">
+                    
+                    
+                    <h3 id="partofspeech" style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 5px;">
+                        Part Of Speech
+                    </h3>
+                    <p id="partofspeechcontent" style="font-weight: bold; font-size: 1.2em; color: #333;">
+                        {{ meaning.part_of_speech}}
+                    </p>
+                    
+                    <hr>
+                    
+                    
+                    <h3 id="definition">Definition(s)</h3>
+                    <ol style="padding-left: 20px;">
+                    {% for definition_item in meaning.definitions %}
+                        <li style="margin-bottom: 10px; font-size: 1.1em;">
+                            {{ definition_item.definition }}
+                        </li>
+                    {% endfor %}
+                    </ol>
+                    
+                    <hr>
+                    
+                    
+                    <h3 id="example">Usage in Sentence</h3>
+                    <ul id="examplecontent" style="list-style-type: disc; padding-left: 20px;">
+                    {% for definition_item in meaning.definitions %}
+                        {% if definition_item.example %}
+                            <li style="color: #4a5568; margin-bottom: 5px;">"{{ definition_item.example }}"</li>
+                        {% endif %}
+                    {% empty %}
+                        <li style="color: #888;">No usage examples found for this Part of Speech.</li>
+                    {% endfor %}
+                    </ul>
+                </div>
+{% endfor %}
+{% endif %}
+{% endif %}
+</div>
+
+
+<script src="static/home.js"></script>
+</body>
+</html>

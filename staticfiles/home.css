@@ -1,0 +1,82 @@
+form {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  gap: 10px; 
+  margin-bottom: 25px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 15px 0;
+  display: none; /* hidden by default */
+}
+
+input {
+  width: 300px;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  font-size: 16px;
+}
+
+input:focus {
+  border-color: #1e3a8a;
+}
+
+#definition{
+  color: #11642d;
+}
+
+#example{
+  font-size: 30px;
+}
+
+#examplecontent{
+  color: #11642d;
+  font-weight: 1000;
+}
+
+#partofspeech{
+  font-size: 30px;
+}
+
+#partofspeechcontent{
+  color: #11642d;
+  font-weight: 1000;
+}
+
+#buttons {
+  display: flex;       
+  gap: 10px;           
+}
+
+#searchbutton {
+  padding: 12px 18px;
+  border: none;
+  background-color: #1e3a8a;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+#searchbutton:hover {
+  background-color: #3b5edb;
+}
+
+#voiceinputbutton {
+  padding: 12px 18px;
+  border: none;
+  background-color: #0b852c;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+#voiceinputbutton:hover {
+  background-color: #0fba3d;
+}
